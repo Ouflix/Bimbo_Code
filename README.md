@@ -1,4 +1,4 @@
-# Bimbo — Robot Umanoid Asistiv pentru Kinetoterapie
+# Bimbo = Robot Umanoid Asistiv pentru Kinetoterapie
 
 Bimbo este un robot umanoid asistiv conceput pentru a ghida pacienți prin exerciții
 de kinetoterapie: demonstrează mișcările fizic, ascultă și înțelege comenzi vocale

@@ -1,0 +1,42 @@
+# Core AI / API clients
+openai
+elevenlabs
+python-dotenv
+
+# Speech
+google-cloud-speech
+google-auth
+vosk
+openwakeword
+pyaudio
+
+# Computer vision
+opencv-python
+pillow
+mediapipe
+ultralytics
+deepface
+numpy
+
+# Audio playback
+pygame
+
+# Networking / utils
+requests
+
+# Motor + serial (ESP32 link)
+pyserial
+gpiozero
+
+# Servo control (arms)
+adafruit-circuitpython-servokit
+adafruit-circuitpython-pca9685
+adafruit-blinka
+
+# TFT display
+adafruit-circuitpython-rgb-display
+board
+busio
+
+# Raspberry Pi camera (install via apt on Raspberry Pi OS, listed here for reference)
+# picamera2

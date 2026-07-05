@@ -1,0 +1,30 @@
+# Secrets - NEVER commit these
+.env
+config/speech_to_text_credentials.json
+*.pem
+*.key
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# Runtime-generated assets (captured photos, temp files)
+assets/temp/*
+!assets/temp/.gitkeep
+
+# Large model / media files not meant to be tracked (uncomment if you swap to Git LFS or external hosting)
+# models/*.pt
+# assets/*.onnx
+# assets/sounds/*.mp3
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

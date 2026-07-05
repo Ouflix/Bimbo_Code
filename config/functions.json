@@ -1,0 +1,233 @@
+[
+   {
+	"type": "function",
+        "function": {
+            "name": "get_weather",
+            "description": "Get weather of an location, the user shoud supply a location first",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "The city and state, e.g. San Francisco, CA"
+                    }
+                },
+                "required": ["location"]
+            }
+            
+        }
+
+     },
+     {
+	"type": "function",
+        "function": {
+            "name": "pose_detect",
+            "description": "Analyses an image captured from an extarnal camera and checks whether or not the pacient is doing the specified exercise correctly",
+            "parameters": {
+                "type": "object",
+                "properties": {
+						"index" : {
+							"type" : "integer",
+							"description" : "The numerical value for each sequence. 0 is for when the user wants to check if he raised his shoulders right and 1 is for when he wants to check if he raised his elbows correctly"
+						}
+					},
+                "required": ["message"]
+            }
+            
+        }
+
+     },
+     {
+        "type": "function",
+        "function": {
+            "name": "shoulder_flexion",
+            "description": "Kinetotherapy exercise: raises the arm forward and up, then lowers it back. Used to improve shoulder range of motion. Can target one or both arms.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "reps": {
+                        "type": "integer",
+                        "description": "Number of repetitions to perform."
+                    },
+                    "hold": {
+                        "type": "number",
+                        "description": "Seconds to hold the arm at the top of each repetition."
+                    },
+                    "arm": {
+                        "type": "string",
+                        "enum": ["left", "right", "both"],
+                        "description": "Which arm to exercise. Defaults to both."
+                    }
+                },
+                "required": ["reps"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "shoulder_abduction",
+            "description": "Kinetotherapy exercise: lifts the arm sideways away from the body, then returns it. Used to improve shoulder mobility. Can target one or both arms.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "reps": {
+                        "type": "integer",
+                        "description": "Number of repetitions to perform."
+                    },
+                    "hold": {
+                        "type": "number",
+                        "description": "Seconds to hold the arm at the outer position of each repetition."
+                    },
+                    "arm": {
+                        "type": "string",
+                        "enum": ["left", "right", "both"],
+                        "description": "Which arm to exercise. Defaults to both."
+                    }
+                },
+                "required": ["reps"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "elbow_flexion",
+            "description": "Kinetotherapy exercise: bends and straightens the elbow. Used to improve elbow range of motion. Can target one or both arms.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "reps": {
+                        "type": "integer",
+                        "description": "Number of repetitions to perform."
+                    },
+                    "hold": {
+                        "type": "number",
+                        "description": "Seconds to hold the elbow bent at each repetition."
+                    },
+                    "arm": {
+                        "type": "string",
+                        "enum": ["left", "right", "both"],
+                        "description": "Which arm to exercise. Defaults to both."
+                    }
+                },
+                "required": ["reps"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "forearm_rotation",
+            "description": "Kinetotherapy exercise: rotates the forearm back and forth (pronation and supination), like turning a doorknob. Used to improve forearm mobility. Can target one or both arms.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "reps": {
+                        "type": "integer",
+                        "description": "Number of repetitions to perform."
+                    },
+                    "hold": {
+                        "type": "number",
+                        "description": "Seconds to hold the forearm at each rotation extreme."
+                    },
+                    "arm": {
+                        "type": "string",
+                        "enum": ["left", "right", "both"],
+                        "description": "Which arm to exercise. Defaults to both."
+                    }
+                },
+                "required": ["reps"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "physio_routine",
+            "description": "Runs the full kinetotherapy routine: shoulder flexion, shoulder abduction, elbow flexion, and forearm rotation in sequence. Returns the robot to home and releases servos at the end.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "number_of_reps": {
+                        "type": "integer",
+                        "description": "Number of repetitions per exercise. Capped at 3 internally."
+                    },
+                    "arm": {
+                        "type": "string",
+                        "enum": ["left", "right", "both"],
+                        "description": "Which arm to exercise throughout the routine. Defaults to both."
+                    }
+                },
+                "required": ["number_of_reps"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "wave_hello",
+            "description": "Wave hello using the left arm. A friendly greeting gesture.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "waves": {
+                        "type": "integer",
+                        "description": "How many full oscillations of the wave to perform."
+                    },
+                    "speed": {
+                        "type": "number",
+                        "description": "Seconds per half-swing of the wave. Lower is faster."
+                    }
+                },
+                "required": ["waves"]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "home",
+            "description": "Smoothly returns all joints to their home (resting) position.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "duration": {
+                        "type": "number",
+                        "description": "Seconds for the full move to home."
+                    }
+                },
+                "required": []
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "release",
+            "description": "Cuts power to all servos. The arms go limp and stop drawing current. Use when finished with all movements or as an emergency stop.",
+            "parameters": {
+                "type": "object",
+                "properties": {},
+                "required": []
+            }
+        }
+    },
+    {
+		"type": "function",
+		"function": {
+			"name": "set_motor_speed",
+			"description": "Controls the DC motors of the robot's base/wheels via the ESP32. Use this to make the robot move forward, slow down, or stop. Value is clamped 0-210. Use this when the user asks the robot to move, go forward, stop, or change speed.",
+			"parameters": {
+				"type": "object",
+				"properties": {
+					"speed_value": {
+						"type": "integer",
+						"description": "Motor speed. 0 stops the motors completely. 210 is maximum speed. Guidance: 0 = stop, 50-80 = slow, 120-150 = medium, 180-210 = fast."
+					}
+				},
+				"required": ["speed_value"]
+			}
+		}
+	}
+]

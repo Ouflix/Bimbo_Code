@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 from modules.ai_request import fetch_ai_response
-from modules.ai_request import fetch_image, report_tool_result
+from modules.ai_request import report_tool_result
 from modules.pose_detection import pose_detect
 from modules.arm_controller import shoulder_flexion, shoulder_abduction, elbow_flexion, forearm_rotation, physio_routine, wave_hello, home, release
 from modules.movement_sequence import movement_sequence, moveUntilStopped
@@ -12,7 +12,6 @@ from modules.motor_run import close_serial, set_motor_speed
 from modules.display import star_eye
 import pyaudio
 import numpy as np
-#from modules.motor import move
 import json
 import requests
 import time
@@ -80,42 +79,45 @@ try:
 			if score > 0.5:
 				pygame.mixer.music.load(BEEP_SOUND_PATH)
 				pygame.mixer.music.play()
-					
+
 				while pygame.mixer.music.get_busy():
 					pygame.time.Clock().tick(10)
-								
-					message = str(transcribe_ro())
-					#message = input("Write: ")
-					if message.lower() == "exit":
-						canProcess = False
-					elif message.lower() == "start":
-						canProcess = True
-					elif "robot" in message.lower() or "robotul" in message.lower():
-						#pygame.mixer.init()
-						pygame.mixer.music.load(ROBOT_SPEECH_PATH)
-						pygame.mixer.music.play()
-						while pygame.mixer.music.get_busy():
-							pygame.time.Clock().tick(10)
-						
-						
-					if canProcess == True and message.lower() != "start":
-						response, functionCall = fetch_ai_response(message)
-						if functionCall == False:
-							print("Answear:", response)
-							tts(response)
+
+				# FIX: transcrierea si procesarea se fac O SINGURA DATA, DUPA ce beep-ul s-a terminat
+				# (inainte erau indentate in interiorul while-ului de mai sus si rulau in bucla)
+				message = str(transcribe_ro())
+				if message.lower() == "exit":
+					canProcess = False
+				elif message.lower() == "start":
+					canProcess = True
+				elif "robot" in message.lower() or "robotul" in message.lower():
+					pygame.mixer.music.load(ROBOT_SPEECH_PATH)
+					pygame.mixer.music.play()
+					while pygame.mixer.music.get_busy():
+						pygame.time.Clock().tick(10)
+
+				if canProcess == True and message.lower() != "start":
+					response, functionCall = fetch_ai_response(message)
+					if functionCall == False:
+						print("Answear:", response)
+						tts(response)
+					else:
+						print(response)
+						func_name = response.function.name
+						func_args = json.loads(response.function.arguments)
+
+						if func_name in FUNCTION_MAP:
+							tts("Desigur")
+							result = FUNCTION_MAP[func_name](**func_args)
+							report_tool_result(response, result)
+							print("Answear:", result)
 						else:
-							print(response)
-							func_name = response.function.name
-							func_args = json.loads(response.function.arguments)
-								
-							if FUNCTION_MAP[func_name]:
-								tts("Desigur")
-								result = FUNCTION_MAP[func_name](**func_args)
-								report_tool_result(response, result)
-								print("Answear:", result)
+							print(f"Functie necunoscuta: {func_name}")
+
 				while mic_stream.get_read_available() > CHUNK_SIZE:
 					mic_stream.read(CHUNK_SIZE, exception_on_overflow=False)
-				oww_model.reset()				
+				oww_model.reset()
+
 								
 								
 					

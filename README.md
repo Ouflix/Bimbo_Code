@@ -1,4 +1,4 @@
-# Bimbo — Robot Umanoid Asistiv pentru Kinetoterapie
+# Bimbo —> Robot Umanoid Asistiv pentru Kinetoterapie
 
 Bimbo este un robot umanoid asistiv conceput pentru a ghida pacienți prin exerciții
 de kinetoterapie: demonstrează mișcările fizic, ascultă și înțelege comenzi vocale
@@ -59,8 +59,8 @@ docs/                    → roadmap și note de dezvoltare
 
 ## Hardware
 
-- Raspberry Pi 5 — orchestrare software (wake word, AI, viziune)
-- ESP32 — control motoare în timp real, comunicare serială cu RPi5
+- Raspberry Pi 5 —> orchestrare software (wake word, AI, viziune)
+- ESP32 —> control motoare în timp real, comunicare serială cu RPi5
 - Servomotoare MG996V pilotate prin placă PCA9685 (16 canale)
 - Cameră RPi (Picamera2) pentru viziune și urmărire
 - Senzori ultrasonici pentru detecția distanței/obstacolelor
@@ -115,12 +115,12 @@ execute o mișcare, pentru a evita acțiuni nedorite asupra pacientului.
 
 Oprirea la semnale de durere funcționează pe **două niveluri independente**:
 
-1. **Software** — `arm_controller.py` expune un mecanism de tip stop-flag
+1. **Software** —> `arm_controller.py` expune un mecanism de tip stop-flag
    (`request_stop()` / `clear_stop()` / `is_stopped()`) verificat la fiecare pas
    al oricărei mișcări și între repetările fiecărui exercițiu. Când pacientul
    semnalează verbal durere, mișcarea curentă se întrerupe în cel mult un pas,
    nu la finalul întregii rutine, iar brațele revin în poziția de repaus (`home`).
-2. **Hardware** — un senzor de curent montat pe linia de alimentare a servourilor
+2. **Hardware** —> un senzor de curent montat pe linia de alimentare a servourilor
    detectează stall-ul unui servo (curent anormal de mare, semn de blocaj mecanic)
    și taie alimentarea tuturor servourilor, independent de starea software-ului.
    Acest nivel funcționează chiar dacă AI-ul, STT-ul sau logica de mai sus
@@ -151,9 +151,9 @@ hardware; testarea integrată va fi finalizată imediat ce piesa este disponibil
 
 Conform regulamentului InfoEducație (secțiunea roboți), se specifică explicit:
 
-- `models/yolov8n.pt` — model pretrained YOLOv8 (Ultralytics), nefolosit re-antrenat
+- `models/yolov8n.pt` —> model pretrained YOLOv8 (Ultralytics), nefolosit re-antrenat
   de autor, folosit ca atare pentru detecție/urmărire persoane.
-- Framework-ul `openWakeWord` — folosit ca bibliotecă pentru detecția cuvântului
+- Framework-ul `openWakeWord` —> folosit ca bibliotecă pentru detecția cuvântului
   de trezire; modelul specific `hey_bimbo.onnx` a fost antrenat separat de autor
   pe acest framework.
 

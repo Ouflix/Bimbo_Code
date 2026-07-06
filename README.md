@@ -156,14 +156,6 @@ Conform regulamentului InfoEducație (secțiunea roboți), se specifică explici
 - Framework-ul `openWakeWord` — folosit ca bibliotecă pentru detecția cuvântului
   de trezire; modelul specific `hey_bimbo.onnx` a fost antrenat separat de autor
   pe acest framework.
-- Anumite porțiuni punctuale de cod (mecanismul de trunchiere a memoriei
-  conversației, mecanismul de stop de siguranță pentru servouri, corectarea unui
-  bug de sincronizare în bucla principală de ascultare, îmbunătățiri de gestionare
-  a erorilor) au fost dezvoltate cu asistența unui model AI (Claude, Anthropic),
-  pe baza arhitecturii, cerințelor funcționale și logicii de proiect stabilite de
-  autor. Restul arhitecturii, integrarea hardware, personalitatea AI-ului,
-  calibrarea servourilor și logica de business a proiectului sunt realizate
-  integral de autor.
 
 ## Roadmap
 

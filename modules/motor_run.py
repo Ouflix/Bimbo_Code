@@ -9,10 +9,14 @@ SERIAL_PORT = os.getenv("SERIAL_PORT", "/dev/ttyUSB0")
 BAUD_RATE = int(os.getenv("SERIAL_BAUD_RATE", "115200"))
 
 print(f"Connecting to ESP32 on {SERIAL_PORT}...")
-ser = serial.Serial(SERIAL_PORT, baudrate=BAUD_RATE, timeout=1)
-
-time.sleep(2)
-print("Connected and ready!")
+try:
+    ser = serial.Serial(SERIAL_PORT, baudrate=BAUD_RATE, timeout=1)
+    time.sleep(2)
+    print("Connected and ready!")
+except serial.SerialException as e:
+    print(f"WARNING: nu m-am putut conecta la ESP32 pe {SERIAL_PORT}: {e}")
+    print("Comenzile de motor vor fi ignorate (fara crash).")
+    ser = None
 
 
 def set_motor_speed(speed_value):

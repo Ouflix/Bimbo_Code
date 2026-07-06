@@ -59,6 +59,27 @@ for name, (lo, hi) in PULSE_RANGES.items():
 
 position = {name: j['home'] for name, j in JOINTS.items()}
 
+# ----- SAFETY STOP -----
+# Flag global verificat in interiorul fiecarui pas de miscare.
+# Orice alt fir de executie (ex: main.py, dupa ce detecteaza "doare"/"stop"
+# in transcrierea vocala) poate apela request_stop() pentru a opri miscarea
+# curenta in cel mult un pas (nu la finalul intregii miscari).
+stop_event = threading.Event()
+
+
+def request_stop():
+    """Cere oprirea miscarii curente cat mai rapid posibil."""
+    stop_event.set()
+
+
+def clear_stop():
+    """Reseteaza flagul de stop, apelat inainte de a incepe o miscare noua."""
+    stop_event.clear()
+
+
+def is_stopped():
+    return stop_event.is_set()
+
 
 # ----- CORE FUNCTIONS -----
 def write(name, angle):
@@ -79,6 +100,9 @@ def move_to(targets, duration=2.0, steps=None):
 
     dt = duration / steps
     for i in range(1, steps + 1):
+        if stop_event.is_set():
+            # Opreste imediat, aici, in loc sa termine miscarea planificata.
+            return
         t = i / steps
         t = t * t * (3 - 2 * t)
         for name in targets:
@@ -137,6 +161,8 @@ def shoulder_flexion(reps=3, hold=1.0, arm='both'):
     home(duration=2.0)
     time.sleep(0.5)
     for _ in range(reps):
+        if is_stopped():
+            break
         move_to(up, duration=1.0)
         time.sleep(hold)
         move_to(down, duration=1.0)
@@ -156,6 +182,8 @@ def shoulder_abduction(reps=3, hold=1.0, arm='both'):
     home(duration=2.0)
     time.sleep(0.5)
     for _ in range(reps):
+        if is_stopped():
+            break
         move_to(out, duration=1.0)
         time.sleep(hold)
         move_to(back, duration=1.0)
@@ -175,6 +203,8 @@ def elbow_flexion(reps=4, hold=0.5, arm='both'):
     home(duration=2.0)
     time.sleep(0.5)
     for _ in range(reps):
+        if is_stopped():
+            break
         move_to(bend, duration=1.5)
         time.sleep(hold)
         move_to(straight, duration=1.5)
@@ -198,50 +228,43 @@ def forearm_rotation(reps=4, hold=0.5, arm='both'):
     home(duration=2.0)
     time.sleep(0.5)
     for _ in range(reps):
+        if is_stopped():
+            break
         move_to(one_way, duration=2.5)
         time.sleep(hold)
         move_to(other_way, duration=2.5)
         time.sleep(hold)
-    move_to(neutral, duration=2.0)
+    if not is_stopped():
+        move_to(neutral, duration=2.0)
 
 
 def physio_routine(number_of_reps=2, arm='both'):
+    clear_stop()  # incepem o rutina noua cu flagul de stop resetat
+
     if number_of_reps > 3:
         number_of_reps = 3
 
     print("1/4 Flexia umarului")
     shoulder_flexion(reps=number_of_reps, arm=arm)
 
-    print("2/4 Abductia umarului")
-    shoulder_abduction(reps=number_of_reps, arm=arm)
+    if not is_stopped():
+        print("2/4 Abductia umarului")
+        shoulder_abduction(reps=number_of_reps, arm=arm)
 
-    print("3/4 Flexia cotului")
-    elbow_flexion(reps=number_of_reps, arm=arm)
+    if not is_stopped():
+        print("3/4 Flexia cotului")
+        elbow_flexion(reps=number_of_reps, arm=arm)
 
-    print("4/4 Rotatia antebratului")
-    forearm_rotation(reps=number_of_reps, arm=arm)
+    if not is_stopped():
+        print("4/4 Rotatia antebratului")
+        forearm_rotation(reps=number_of_reps, arm=arm)
+
+    if is_stopped():
+        print("Rutina intrerupta de siguranta (durere semnalata).")
+        clear_stop()  # home() de mai jos foloseste move_to, care ar respecta stop_event si nu s-ar misca deloc
 
     home(duration=3.0)
     release()
 
-"""
-for name, j in JOINTS.items():
-    write(name, j['home'])
-time.sleep(0.5)
-"""
 if __name__ == "__main__":
     move_to({'right_shoulder_inout': 80}, duration=0.5)
-    
-    #forearm_rotation(reps=1)
-    """
-    print("Start:", position)
-
-    print("\nReaching out...")
-    wave_hello(5, 0.5)
-    print("\nReturning home...")
-    home(duration=0.5)
-    print("Final:", position)
-
-    release()
-    print("\nServos released.")
-    """

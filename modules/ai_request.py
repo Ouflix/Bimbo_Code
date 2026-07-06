@@ -9,6 +9,8 @@ from modules.audio import tts
 load_dotenv()
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+OPENAI_CHAT_MODEL = os.getenv("OPENAI_CHAT_MODEL", "gpt-5.4-mini")
+OPENAI_VISION_MODEL = os.getenv("OPENAI_VISION_MODEL", "gpt-4o")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 FUNCTIONS_PATH = BASE_DIR / "config" / "functions.json"
@@ -51,6 +53,8 @@ personality = """
 
 messagesList = [{"role": "system", "content": personality}]
 
+MAX_HISTORY_MESSAGES = 12  # numar maxim de mesaje user/assistant/tool tinute in memorie (fara system prompt)
+
 
 with open(FUNCTIONS_PATH, "r") as f:
     function_call = json.load(f)
@@ -60,6 +64,16 @@ def reset_memory():
     """Sterge istoricul conversatiei."""
     global messagesList
     messagesList = [{"role": "system", "content": personality}]
+
+
+def _trim_memory():
+    """Pastreaza mesajul system + ultimele MAX_HISTORY_MESSAGES mesaje, ca sa nu creasca la infinit."""
+    global messagesList
+    system_msg = messagesList[0]
+    rest = messagesList[1:]
+    if len(rest) > MAX_HISTORY_MESSAGES:
+        rest = rest[-MAX_HISTORY_MESSAGES:]
+    messagesList = [system_msg] + rest
 
 
 def fetch_image(message):
@@ -77,12 +91,13 @@ def fetch_image(message):
     })
 
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model=OPENAI_VISION_MODEL,
         messages=messagesList,
     )
 
     msg = response.choices[0].message
     messagesList.append(msg)
+    _trim_memory()
     tts(msg.content)
     return msg.content
 
@@ -133,13 +148,14 @@ def fetch_ai_response(message):
     messagesList.append({"role": "user", "content": message})
 
     response = client.chat.completions.create(
-        model="gpt-5.4-mini",
+        model=OPENAI_CHAT_MODEL,
         messages=messagesList,
         tools=function_call,
         stream=False
     )
     msg = response.choices[0].message
     messagesList.append(msg)
+    _trim_memory()
 
     if msg.tool_calls:
         functionCall = True
@@ -154,3 +170,4 @@ def report_tool_result(tool_call, result):
         "tool_call_id": tool_call.id,
         "content": str(result) if result is not None else "Done.",
     })
+    _trim_memory()

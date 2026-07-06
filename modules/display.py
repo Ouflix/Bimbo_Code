@@ -24,20 +24,6 @@ disp = st7735.ST7735R(
 green = Image.new("RGB", (128, 160), (0, 255, 0))
 red = Image.new("RGB", (128, 160), (255, 0, 0))
 
-ASSETS = Path(__file__).resolve().parent.parent / "assets" / "display_images"
-names = ["eye_open.jpeg", "eye_blink.jpeg"]
-
-"""
-try:
-	frames = [Image.open(ASSETS / n) for n in names]
-	while True:
-		for f in frames:
-			disp.image(f)
-			time.sleep(0.5)       
-except KeyboardInterrupt:
-    pass
-"""
-
 W, H = 160, 128
 BG        = (0, 0, 0)
 SCLERA    = (255, 255, 255)

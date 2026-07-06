@@ -22,8 +22,8 @@ def capture():
 		cv2.imwrite(str(TEMP_IMAGE_PATH), frame)
 		print("Image captured")
 		return True
-	except:
-		print("Issue")
+	except Exception as e:
+		print(f"Camera capture failed: {e}")
 		return False
 	
 def capture_and_encode():

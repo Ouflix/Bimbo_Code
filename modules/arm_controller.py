@@ -27,15 +27,14 @@ channels_temp = {
 
 kit = ServoKit(channels=16)
 
-# ----- JOINTS: calibrated home + safe range per joint -----
 JOINTS = {
-    # left arm
+    # brat stang
     'left_shoulder_inout':   {'channel': 0, 'home': 100, 'min': 0,   'max': 140},
     'left_elbow_updown':     {'channel': 1, 'home': 0,   'min': 0,   'max': 70},
     'left_elbow_inout':      {'channel': 2, 'home': 145, 'min': 10,  'max': 180},
     'left_shoulder_updown':  {'channel': 3, 'home': 130, 'min': 0,   'max': 180},
 
-    # right arm
+    # brat drept
     'right_shoulder_inout':  {'channel': 4, 'home': 0,   'min': 0,   'max': 80},
     'right_elbow_inout':     {'channel': 5, 'home': 170, 'min': 130, 'max': 180},
     'right_shoulder_updown': {'channel': 6, 'home': 70,  'min': 0,   'max': 180},
@@ -59,7 +58,6 @@ for name, (lo, hi) in PULSE_RANGES.items():
 
 position = {name: j['home'] for name, j in JOINTS.items()}
 
-# ----- SAFETY STOP -----
 # Flag global verificat in interiorul fiecarui pas de miscare.
 # Orice alt fir de executie (ex: main.py, dupa ce detecteaza "doare"/"stop"
 # in transcrierea vocala) poate apela request_stop() pentru a opri miscarea
@@ -81,7 +79,7 @@ def is_stopped():
     return stop_event.is_set()
 
 
-# ----- CORE FUNCTIONS -----
+
 def write(name, angle):
     j = JOINTS[name]
     angle = max(j['min'], min(j['max'], angle))
@@ -120,8 +118,6 @@ def release():
 
 
 def _filter(targets, arm):
-    """Pick only joints matching the requested arm side.
-    arm: 'left', 'right', or 'both' (default keeps everything)."""
     if arm == 'both':
         return targets
     return {k: v for k, v in targets.items() if k.startswith(arm + '_')}
@@ -143,7 +139,6 @@ def wave_hello(waves=3, speed=0.5):
     move_to({'left_elbow_inout': 90}, duration=speed)
 
 
-# ----- EXERCISES -----
 def shoulder_flexion(reps=3, hold=1.0, arm='both'):
     up = _filter({
         'left_shoulder_updown':  30,

@@ -166,6 +166,13 @@ Conform regulamentului InfoEducație (secțiunea roboți), se specifică explici
   de trezire; modelul specific `hey_bimbo.onnx` a fost antrenat separat de autor
   pe acest framework.
 
+## Fiecare componenta mecanica a fost:
+ 	-proiectată în Onshape;
+ 	-optimizată pentru imprimare 3D;
+## Materiale utilizate:
+ 	-PETG cu fibră de carbon;
+ 	-PLA;
+
 ## Roadmap
 
 Vezi [docs/ROADMAP.md](docs/ROADMAP.md) pentru direcțiile de dezvoltare viitoare.

@@ -71,7 +71,7 @@ docs/                    → roadmap și note de dezvoltare
 - Cameră RPi (Picamera2) pentru viziune și urmărire
 - Display TFT (ST7735) pentru "fața" robotului
 - Baterie custom 4S LiFePO4 + BMS
--Punți H BTS7960 pentru control complet asupra motoarelor DC
+- Punți H BTS7960 pentru control complet asupra motoarelor DC
 - 4 x Motoare DC
 - Luxonis OAK-D Lite
 - Microfon USB

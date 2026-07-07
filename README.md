@@ -182,3 +182,6 @@ Vezi [docs/ROADMAP.md](docs/ROADMAP.md) pentru direcțiile de dezvoltare viitoar
 Proiect realizat individual, ca parte a pregătirii pentru competiția
 **InfoEducație**, cu scopul de a combina robotică, viziune computerizată și AI
 conversațional într-un asistent fizic util pentru recuperare medicală.
+
+## Poze
+![](docs/Poze/Screenshot%202026-07-07%20152354.png)

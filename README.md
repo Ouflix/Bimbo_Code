@@ -61,13 +61,18 @@ docs/                    → roadmap și note de dezvoltare
 
 - Raspberry Pi 5 —> orchestrare software (wake word, AI, viziune)
 - ESP32 —> control motoare în timp real, comunicare serială cu RPi5
-- Servomotoare MG996V pilotate prin placă PCA9685 (16 canale)
+- Convertoare Pololu (D24V50F5 si D24V150F6)
+- 8 x Servomotoare MG996V pilotate prin placa PCA9685 (16 canale)
 - Cameră RPi (Picamera2) pentru viziune și urmărire
 - Senzori ultrasonici pentru detecția distanței/obstacolelor
 - Display TFT (ST7735) pentru "fața" robotului
-- Baterie custom 4S LiFePO4 + placă eFuse (protecție la suprasarcină/subtensiune)
-  proiectată separat în KiCad
-
+- Baterie custom 4S LiFePO4 + BMS
+-Punți H BTS7960 pentru control complet asupra motoarelor DC
+- 4 x Motoare DC
+- Luxonis OAK-D Lite
+- Microfon USB
+- Boxă portabilă JBL
+- (optional) Placa de protectie supratensiune eFuse conceputa in Kicad de catre noi
 ## Instalare
 
 1. Clonează repo-ul și instalează dependențele Python:

@@ -6,6 +6,11 @@ de kinetoterapie: demonstrează mișcările fizic, ascultă și înțelege comen
 a verifica dacă exercițiile sunt executate corect. Proiect individual, realizat ca
 parte a pregătirii pentru **InfoEducație**.
 
+## De ce Bimbo
+Kinetoterapia se bazează pe repetiție, precizie și motivație. Mulți pacienți efectuează exercițiile acasă fără îndrumare permanentă, ceea ce poate conduce la execuții incorecte și la o recuperare mai lentă.
+BIMBO a fost creat pentru a reduce această problemă.
+În loc să înlocuiască kinetoterapeutul, robotul acționează ca un asistent inteligent capabil să demonstreze exercițiile, să monitorizeze postura pacientului, să ofere corectări în timp real și să îl motiveze pe parcursul întregului proces de recuperare. Proiectul demonstrează modul în care robotica, viziunea artificială și tehnologiile moderne pot contribui la dezvoltarea unor soluții inovatoare pentru kinetoterapie, făcând recuperarea mai accesibilă, mai eficientă și mai atractivă.
+
 ## Ce face Bimbo
 
 - **Ascultă în permanență** un cuvânt de trezire ("hey Bimbo") folosind un model

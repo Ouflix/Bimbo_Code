@@ -185,3 +185,4 @@ conversațional într-un asistent fizic util pentru recuperare medicală.
 
 ## Poze
 ![](docs/Poze/Screenshot%202026-07-07%20152354.png)
+![](docs/Poze/Screenshot%202026-07-06%20183549.png)

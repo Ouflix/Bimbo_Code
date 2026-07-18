@@ -152,9 +152,8 @@ integrării complete pe robot:
   serială mockuită să eșueze — programul continuă să ruleze și ignoră comenzile
   de motor, în loc să se blocheze la pornire.
 
-Fluxul complet integrat (microfon real → wake word → STT → AI → servo fizic) nu
-a putut fi testat end-to-end din cauza lipsei temporare a unei componente
-hardware; testarea integrată va fi finalizată imediat ce piesa este disponibilă.
+Fluxul complet integrat (microfon real → wake word → STT → AI → servo fizic)
+a putut fi testat end-to-end datorita livarii componentei lipsa.
 
 ## Componente care nu sunt scrise/create integral de autor
 

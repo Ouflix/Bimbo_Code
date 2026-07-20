@@ -169,11 +169,11 @@ Conform regulamentului InfoEducație (secțiunea roboți), se specifică explici
 
 ## Servicii cloud externe (apelate prin API):
 
-OpenAI — creierul conversațional și de viziune.
+* OpenAI — creierul conversațional și de viziune.
 
-Google Cloud Speech-to-Text — transcriere vocală în română.
+* Google Cloud Speech-to-Text — transcriere vocală în română.
 
-ElevenLabs — sinteza vocală (TTS).
+* ElevenLabs — sinteza vocală (TTS).
 
 ## Fiecare componenta mecanica a fost:
  	-proiectată în Onshape;
@@ -196,15 +196,15 @@ conversațional într-un asistent fizic util pentru recuperare medicală.
 ## Surse și tehnologii utilizate
 Limbaje: Python (aplicație principală), C++ (firmware ESP32)
 
-AI / ML: OpenAI (chat + vision + function calling), MediaPipe Pose, YOLOv8, openWakeWord, Vosk, DeepFace
+* AI / ML: OpenAI (chat + vision + function calling), MediaPipe Pose, YOLOv8, openWakeWord, Vosk, DeepFace
 
-Voce: Google Cloud Speech-to-Text (STT), ElevenLabs (TTS)
+* Voce: Google Cloud Speech-to-Text (STT), ElevenLabs (TTS)
 
-Control hardware: Adafruit CircuitPython (PCA9685 / ServoKit), gpiozero, pyserial
+* Control hardware: Adafruit CircuitPython (PCA9685 / ServoKit), gpiozero, pyserial
 
-Viziune: OpenCV, Picamera2, OAK-D Lite (Luxonis)
+* Viziune: OpenCV, Picamera2, OAK-D Lite (Luxonis)
 
-Proiectare: Onshape (mecanică), KiCad (placă eFuse)
+* Proiectare: Onshape (mecanică), KiCad (placă eFuse)
 
 ## Poze
 ![](docs/Poze/Screenshot%202026-07-07%20152354.png)

@@ -153,9 +153,9 @@ integrării complete pe robot:
 - Reziliența la deconectarea ESP32-ului (`motor_run.py`): testat cu conexiunea
   serială mockuită să eșueze — programul continuă să ruleze și ignoră comenzile
   de motor, în loc să se blocheze la pornire.
-- Viziune și urmărire (pose_detection.py, movement_sequence.py): verificarea corectitudinii
+- Viziune și urmărire (`pose_detection.py`, `movement_sequence.py`): verificarea corectitudinii
   exercițiilor cu MediaPipe Pose și urmărirea persoanei cu YOLOv8 au fost testate cu camera reală pe robot.
-- Control brațe și bază mobilă (arm_controller.py, motor_run.py, movement.cpp): fiecare mișcare a fost testată
+- Control brațe și bază mobilă (`arm_controller.py`, `motor_run.py`, `movement.cpp`): fiecare mișcare a fost testată
   fizic pe servomotoare și motoarele DC, cu calibrarea unghiurilor.
 
 Fluxul complet integrat (microfon real → wake word → STT → AI → servo fizic)

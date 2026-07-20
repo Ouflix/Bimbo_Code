@@ -167,6 +167,12 @@ Conform regulamentului InfoEducație (secțiunea roboți), se specifică explici
   de trezire; modelul specific `hey_bimbo.onnx` a fost antrenat separat de autor
   pe acest framework.
 
+## Servicii cloud externe (apelate prin API):
+
+OpenAI — creierul conversațional și de viziune.
+Google Cloud Speech-to-Text — transcriere vocală în română.
+ElevenLabs — sinteza vocală (TTS).
+
 ## Fiecare componenta mecanica a fost:
  	-proiectată în Onshape;
  	-optimizată pentru imprimare 3D;

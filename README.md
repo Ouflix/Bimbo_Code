@@ -189,9 +189,22 @@ Vezi [docs/ROADMAP.md](docs/ROADMAP.md) pentru direcțiile de dezvoltare viitoar
 
 ## Context
 
-Proiect realizat individual, ca parte a pregătirii pentru competiția
+Proiect realizat alaturi de Radu Ghica, ca parte a pregătirii pentru competiția
 **InfoEducație**, cu scopul de a combina robotică, viziune computerizată și AI
 conversațional într-un asistent fizic util pentru recuperare medicală.
+
+## Surse și tehnologii utilizate
+Limbaje: Python (aplicație principală), C++ (firmware ESP32)
+
+AI / ML: OpenAI (chat + vision + function calling), MediaPipe Pose, YOLOv8, openWakeWord, Vosk, DeepFace
+
+Voce: Google Cloud Speech-to-Text (STT), ElevenLabs (TTS)
+
+Control hardware: Adafruit CircuitPython (PCA9685 / ServoKit), gpiozero, pyserial
+
+Viziune: OpenCV, Picamera2, OAK-D Lite (Luxonis)
+
+Proiectare: Onshape (mecanică), KiCad (placă eFuse)
 
 ## Poze
 ![](docs/Poze/Screenshot%202026-07-07%20152354.png)

@@ -170,7 +170,9 @@ Conform regulamentului InfoEducație (secțiunea roboți), se specifică explici
 ## Servicii cloud externe (apelate prin API):
 
 OpenAI — creierul conversațional și de viziune.
+
 Google Cloud Speech-to-Text — transcriere vocală în română.
+
 ElevenLabs — sinteza vocală (TTS).
 
 ## Fiecare componenta mecanica a fost:

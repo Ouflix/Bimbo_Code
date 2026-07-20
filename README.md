@@ -80,15 +80,6 @@ docs/                    → roadmap și note de dezvoltare
 - (optional) Placa de protectie supratensiune eFuse conceputa in Kicad de catre noi
 ![](docs/Poze/Hardware.png)
 
-## Proiectare mecanică
-~Fiecare componentă mecanică a fost:
-  -proiectată în Onshape;
-  -optimizată pentru imprimare 3D.
-  
-~Materiale utilizate: PETG cu fibră de carbon și PLA.
-
-~Modelele 3D (fișiere .stl) se găsesc în docs/Proiectare/.
-
 ## Instalare
 1. Clonează repo-ul și instalează dependențele Python:
 
@@ -182,6 +173,7 @@ Conform regulamentului InfoEducație (secțiunea roboți), se specifică explici
 ## Materiale utilizate:
  	-PETG cu fibră de carbon;
  	-PLA;
+Modelele 3D (fișiere .stl) se găsesc în docs/Proiectare/.
 
 ## Roadmap
 

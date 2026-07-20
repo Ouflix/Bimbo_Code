@@ -78,6 +78,8 @@ docs/                    → roadmap și note de dezvoltare
 - Microfon USB
 - Boxă portabilă JBL
 - (optional) Placa de protectie supratensiune eFuse conceputa in Kicad de catre noi
+![](docs/Poze/Hardware.png)
+
 ## Instalare
 
 1. Clonează repo-ul și instalează dependențele Python:

@@ -193,7 +193,7 @@ Vezi [docs/ROADMAP.md](docs/ROADMAP.md) pentru direcțiile de dezvoltare viitoar
 
 ## Context
 
-Proiect realizat alaturi de Radu Ghica, ca parte a pregătirii pentru competiția
+Proiect realizat de catre Popa Victor (Programare si Hardware) si Radu Ghica (Design si Printare), ca parte a pregătirii pentru competiția
 **InfoEducație**, cu scopul de a combina robotică, viziune computerizată și AI
 conversațional într-un asistent fizic util pentru recuperare medicală.
 

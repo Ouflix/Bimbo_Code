@@ -146,7 +146,7 @@ integrării complete pe robot:
 - Mecanismul de protecție la stall: senzorul de curent WCS1700 monitorizează consumul servourilor prin ESP32, care 
   taie fizic alimentarea printr-un releu când detectează un stall susținut (curent peste prag timp de 150ms,   
   ca să ignore vârfurile normale de accelerație). ESP32 semnalează Raspberry Pi-ului prin serial, care întrerupe
-  imediat rutina de exerciții în mijlocul execuției — nu la final — și eliberează servourile. 
+  imediat rutina de exerciții în mijlocul execuției, nu la final și eliberează servourile. 
   Alimentarea rămâne tăiată până la o comandă explicită de resetare, moment în care robotul revine în siguranță la poziția home
 - Trunchierea memoriei conversației (`ai_request.py`): testat cu 30 de runde de
   conversație simulate — istoricul rămâne mereu limitat, mesajul de sistem

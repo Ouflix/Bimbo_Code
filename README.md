@@ -3,8 +3,7 @@
 Bimbo este un robot umanoid asistiv conceput pentru a ghida pacienți prin exerciții
 de kinetoterapie: demonstrează mișcările fizic, ascultă și înțelege comenzi vocale
 în limba română, oferă feedback în timp real și urmărește vizual pacientul pentru
-a verifica dacă exercițiile sunt executate corect. Proiect individual, realizat ca
-parte a pregătirii pentru **InfoEducație**.
+a verifica dacă exercițiile sunt executate corect.
 
 ## De ce Bimbo
 Kinetoterapia se bazează pe repetiție, precizie și motivație. Mulți pacienți efectuează exercițiile acasă fără îndrumare permanentă, ceea ce poate conduce la execuții incorecte și la o recuperare mai lentă.

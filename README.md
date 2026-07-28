@@ -140,8 +140,7 @@ Oprirea la semnale de durere funcționează pe **două niveluri independente**:
 ## Testare
 
 Componentele critice de siguranță și robustețe au fost testate **izolat, cu
-hardware**, în absența temporară a unei piese fizice necesare
-integrării complete pe robot:
+hardware-ul robotului**:
 
 - Mecanismul de protecție la stall: senzorul de curent WCS1700 monitorizează consumul servourilor prin ESP32, care 
   taie fizic alimentarea printr-un releu când detectează un stall susținut (curent peste prag timp de 150ms,   

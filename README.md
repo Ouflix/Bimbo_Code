@@ -134,7 +134,8 @@ Oprirea la semnale de durere funcționează pe **două niveluri independente**:
    detectează stall-ul unui servo (curent anormal de mare, semn de blocaj mecanic)
    și taie alimentarea tuturor servourilor, independent de starea software-ului.
    Acest nivel funcționează chiar dacă AI-ul, STT-ul sau logica de mai sus
-   dau fail dintr-un motiv neprevăzut.
+   dau fail dintr-un motiv neprevăzut. Totodata robotul este echipat cu un buton 
+   ON/OFF ce inchide intregul robot in caz de urgenta
 
 ## Testare
 

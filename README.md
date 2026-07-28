@@ -153,8 +153,12 @@ hardware-ul robotului**:
 - Reziliența la deconectarea ESP32-ului (`motor_run.py`): testat cu conexiunea
   serială mockuită să eșueze — programul continuă să ruleze și ignoră comenzile
   de motor, în loc să se blocheze la pornire.
-- Viziune și urmărire (`pose_detection.py`, `movement_sequence.py`): verificarea corectitudinii
-  exercițiilor cu MediaPipe Pose și urmărirea persoanei cu YOLOv8 au fost testate cu camera reală pe robot.
+- Viziune și urmărire (pose_detection_v2.py, oakDLiteTest.py): verificarea corectitudinii exercițiilor și urmărirea pacientului rulează pe o cameră stereo 
+  OAK-D Lite prin DepthAI, testate pe robot.
+  Pentru verificarea exercițiilor, landmark-urile 2D de la MediaPipe Pose sunt combinate cu harta de adâncime stereo: fiecare articulație e reproiectată în coordonate 
+  metrice 3D folosind intrinsecii camerei, iar unghiurile articulare se calculează în spațiu, nu în proiecție. Astfel măsurătoarea nu mai depinde de poziția pacientului față de cameră. 
+  Peste asta rulează două verificări suplimentare — un validator de traiectorie (durată, netezime, monotonie) și un test de „liveness” bazat pe variația în adâncime — care resping repetările executate incorect sau tentativele de a păcăli sistemul cu o imagine statică.
+  Pentru urmărirea persoanei, detecția YOLOv6-nano rulează direct pe VPU-ul camerei, iar rețeaua spațială returnează coordonatele 3D ale persoanei detectate. Robotul se orientează și se apropie proporțional cu distanța măsurată, oprindu-se la o distanță prestabilită
 - Control brațe și bază mobilă (`arm_controller.py`, `motor_run.py`, `movement.cpp`): fiecare mișcare a fost testată
   fizic pe servomotoare și motoarele DC, cu calibrarea unghiurilor.
 
